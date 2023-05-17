@@ -53,7 +53,6 @@ export default function App() {
         localStorage.setItem('jwt', res.token);
         setIsLoggedIn(true);
         setEmailValue(email);
-        handleInfoTooltip(true);
         navigate("/");
       })
       .catch(() => {

@@ -9,7 +9,8 @@ export default function InfoTooltip({ popupStatus, isOpen, onClose }) {
         <button
           onClick={onClose}
           className="popup__close"
-          type="button"></button>
+          type="button">
+        </button>
         <img
           className="popup__icon"
           src={popupStatus.image}
