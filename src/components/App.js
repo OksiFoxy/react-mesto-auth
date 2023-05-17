@@ -13,9 +13,9 @@ import Register from './Register';
 import ProtectedRoute from './ProtectedRoute';
 import InfoTooltip from './InfoTooltip';
 import checkmarkImg from '../images/checked.svg'
-import crossImg from '../images/dontsigin.svg'
+import crossImg from '../images/dontsingin.svg'
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import {signUp, signIn, checkToken} from '../utils/apiAuth';
+import { signUp, signIn, checkToken } from '../utils/apiAuth';
 
 
 
@@ -36,11 +36,13 @@ export default function App() {
   function handleRegister(email, password) {
     signUp(email, password)
       .then(() => {
-        setPopupStatus({image: checkmarkImg, message: 'Вы зарегистрировались!'});
+        console.log(popupStatus.message)
+        setPopupStatus({ image: checkmarkImg, message: 'Вы успешно зарегистрировались!' });
+        handleInfoTooltip(true);
         navigate("/signin");
       })
       .catch(() => {
-        setPopupStatus({image: crossImg, message: 'Что-то не так'});
+        setPopupStatus({ image: crossImg, message: 'Что-то пошло не так! Попробуйте еще раз' });
       })
       .finally(handleInfoTooltip);
   };
@@ -51,11 +53,12 @@ export default function App() {
         localStorage.setItem('jwt', res.token);
         setIsLoggedIn(true);
         setEmailValue(email);
+        handleInfoTooltip(true);
         navigate("/");
       })
       .catch(() => {
-        setPopupStatus({image: crossImg, message: 'Что-то не так'});
-        handleInfoTooltip();
+        setPopupStatus({ image: crossImg, message: 'Что-то пошло не так! Попробуйте еще раз' });
+        handleInfoTooltip(true);
       });
   };
 
@@ -252,7 +255,7 @@ export default function App() {
           />
           <Route exact path="*"
             element={
-              isLoggedIn ? <Navigate to="/" /> : <Navigate to="/signin"/>
+              isLoggedIn ? <Navigate to="/" /> : <Navigate to="/signin" />
             }
           />
         </Routes>
@@ -260,29 +263,29 @@ export default function App() {
         <InfoTooltip
           popupStatus={popupStatus}
           isOpen={infoTooltip}
-          onClose = {closeAllPopups}
+          onClose={closeAllPopups}
         />
         <PopupEditProfile
-          isOpen = {isEditProfilePopupOpen}
-          onClose = {closeAllPopups}
-          onUpdateUser = {handleUpdateUser}
-          isLoading = {isLoading}
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
+          isLoading={isLoading}
         />
         <PopupEditAvatar
-          isOpen = {isEditAvatarPopupOpen}
-          onClose = {closeAllPopups}
-          onUpdateAvatar = {handleUpdateAvatar}
-          isLoading = {isLoading}
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+          isLoading={isLoading}
         />
         <PopupAddCard
-          isOpen = {isAddPlacePopupOpen}
-          onClose = {closeAllPopups}
-          onAddPlace = {handleAddPlaceSubmit}
-          isLoading = {isLoading}
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+          onAddPlace={handleAddPlaceSubmit}
+          isLoading={isLoading}
         />
         <ImagePopup
-          card = {selectedCard}
-          onClose = {closeAllPopups}
+          card={selectedCard}
+          onClose={closeAllPopups}
         />
       </div>
     </CurrentUserContext.Provider>

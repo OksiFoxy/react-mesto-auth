@@ -4,9 +4,9 @@
 //   Не забываем также завести стейт isLoggedIn, изменить его на true и выполнить редирект на
 //   корень сайта.
 
-import {useState} from 'react';
+import { useState } from 'react';
 
-export default function Login({onLogin}) {
+export default function Login({ onLogin }) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 

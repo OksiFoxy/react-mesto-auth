@@ -1,8 +1,8 @@
 // Register (почти аналогично логину + показать сообщение, что регистрация успешна).
-import {useState} from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Register({onRegister}) {
+export default function Register({ onRegister }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

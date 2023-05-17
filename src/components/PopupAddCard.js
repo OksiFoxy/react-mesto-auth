@@ -37,9 +37,9 @@ function PopupAddCard({ isOpen, onClose, onAddPlace, isLoading }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      isLoading = {isLoading}
-      submitButton = 'Добавить'
-      submitBtnLoading = 'Добавляем...'
+      isLoading={isLoading}
+      submitButton='Добавить'
+      submitBtnLoading='Добавляем...'
     >
       <input
         type="text"

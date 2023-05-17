@@ -36,9 +36,9 @@ function PopupEditProfile({ isOpen, onClose, onUpdateUser, isLoading }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      isLoading = {isLoading}
-      submitButton = 'Сохранить'
-      submitBtnLoading = 'Сохраняем...'
+      isLoading={isLoading}
+      submitButton='Сохранить'
+      submitBtnLoading='Сохраняем...'
     >
       <input
         type="text"

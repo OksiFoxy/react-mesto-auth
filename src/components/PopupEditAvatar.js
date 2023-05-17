@@ -23,9 +23,9 @@ function PopupEditAvatar({ isOpen, onClose, onUpdateAvatar, isLoading }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      isLoading = {isLoading}
-      submitButton = 'Обновить'
-      submitBtnLoading = 'Обновляем...'
+      isLoading={isLoading}
+      submitButton='Обновить'
+      submitBtnLoading='Обновляем...'
     >
       <input
         type="url"

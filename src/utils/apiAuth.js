@@ -2,41 +2,41 @@ const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
-    return Promise.reject(res.status);
+  return Promise.reject(res.status);
 }
 
 const BASE_URL = 'https://auth.nomoreparties.co';
 
 const signUp = (email, password) => {
   const requestUrl = BASE_URL + '/signup';
-  return fetch (requestUrl, {
+  return fetch(requestUrl, {
     method: 'POST',
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ "email": email, "password": password }),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
 
 const signIn = (email, password) => {
   const requestUrl = BASE_URL + '/signin';
-  return fetch (requestUrl, {
+  return fetch(requestUrl, {
     method: 'POST',
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ "email": email, "password": password }),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
 
 const checkToken = (token) => {
   const requestUrl = BASE_URL + '/users/me';
-  return fetch (requestUrl, {
+  return fetch(requestUrl, {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
     },
   })
-  .then(checkResponse);
+    .then(checkResponse);
 }
 
-export {signUp, signIn, checkToken};
+export { signUp, signIn, checkToken };

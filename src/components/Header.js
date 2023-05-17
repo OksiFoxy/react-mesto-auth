@@ -1,15 +1,15 @@
 import headerLogo from '../images/header_logo.svg';
 import { Link } from "react-router-dom";
 
-const Header = ({title, route, email, onClick}) => {
+const Header = ({ title, route, email, onClick }) => {
   return (
     <header className="header">
-        <img
+      <img
         className="header__logo"
-        src={ headerLogo }
+        src={headerLogo}
         alt="Логотип" />
       <div className="header__auth">
-        <p className="header__text">{email}</p>
+        <p className="header__email">{email}</p>
         <Link to={route} className="header__link" onClick={onClick}>{title}</Link>
       </div>
     </header>
